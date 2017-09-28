@@ -1,0 +1,31 @@
+{
+  "name": "html-talk",
+  "repository": "dougalsutherland/html-talk",
+  "private": "true",
+  "version": "0.1.0",
+  "author": {
+    "name": "Dougal J. Sutherland",
+    "email": "dougal@gmail.com",
+    "web": "http://dougal.me"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "clean": "make clean",
+    "build": "make all",
+    "watch": "watch make .",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "reveal.js": "^3.5.0",
+    "reveal.js-menu": "^0.7.0"
+  },
+  "devDependencies": {
+    "lodash.template-cli": "^0.5.0",
+    "mathjax-node-page": "^1.4.0",
+    "node-sass": "^4.5.3",
+    "pug-cli": "^1.0.0-alpha6",
+    "watch": "^1.0.2"
+  }
+}

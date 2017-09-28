@@ -1,0 +1,147 @@
+extends layout.pug
+
+mixin ref(name, href)
+  span.cite
+    | [
+    a(href=href)= name
+    | ]
+mixin sref(name, href)
+  |  
+  +ref(name, href)
+mixin refs(name, href)
+  +ref(name, href)
+  |  
+mixin srefs(name, href)
+  |  
+  +ref(name, href)
+  |  
+
+block title
+  title Dublin DL talk
+
+block slides
+  section(data-transition="none")
+    h1 Generative Modelling with Empirical Distributions
+    p Ambrish Rawat, Mathieu Sinn
+    p IBM Research Dublin
+  section(data-transition="none")
+    h3 Why do we study Generative Modelling?
+    ul
+      li.fragment The "create to understand" school of thought
+      figure.fragment
+        img.plain(src="img/physics.jpg" align="centre" width="40%", border="None")
+        img.plain(src="img/LDA.png" align="centre" width="60%", border="None")
+      li.fragment Wide range of applications have benefited from it 
+
+      p
+        span.fragment ... Speech Synthesis, Topic Modelling, Population Genetics ...
+
+  
+  section(data-transition="none")
+    h3 How do we approach it?
+    p.fragment Let's take an example
+      figure.fragment
+        img.plain(src="img/gm1.jpg" align="centre" width="40%", border="None")
+    div(style="width: 100%; position: absolute; left: 0").
+      \begin{align}
+      
+      \end{align}
+
+  section(data-transition="none") 
+    h3 How do we approach it?
+    p Let's take an example
+      figure
+        img.plain(src="img/gm2.jpg" align="centre" width="40%", border="None")
+    
+    div(style="width: 100%; position: absolute; left: 0").
+      \begin{align}
+        z_n &\sim \text{Multinomial}(z_n|\pi)
+      \end{align}
+
+  section(data-transition="none") 
+    h3 How do we approach it?
+    p Let's take an example
+      figure
+        img.plain(src="img/gm3.jpg" align="centre" width="40%", border="None")
+    div(style="width: 100%; position: absolute; left: 0").
+      \begin{align}
+        z_n &\sim \text{Multinomial}(z_n|\pi)\\
+        x_n &\sim \mathcal{N}(\mu_k,\Sigma_k)
+      \end{align}    
+  
+  section(data-transition="none") 
+    h3 How do we approach it?
+    p Let's take an example
+      figure
+        img.plain(src="img/gm3.jpg" align="centre" width="40%", border="None")
+    div(style="width: 100%; position: absolute; left: 0").
+      \begin{align}
+        z_n &\sim \text{Multinomial}(z_n|\pi)\\
+        x_n &\sim \mathcal{N}(\mu_k,\Sigma_k)
+      \end{align}
+      Maximise the log likelihood with respect to observations 
+
+  section(data-transition="none") 
+    h3 How do we evaluate our model?
+    p 
+      strong Strategy 1: 
+      | Try to explain some held out data
+      figure
+        img.plain(src="img/gm4.jpg" align="centre" width="40%", border="None")
+    p.fragment ...compute log likelihood of test set...
+
+  section(data-transition="none") 
+    h3 How do we evaluate our model?
+    p 
+      strong Strategy 2: 
+      | Generate samples and compare them
+      figure
+        img.plain(src="img/gm5.jpg" align="centre" width="40%", border="None")
+    p.fragment ...density comparison...
+
+  section(data-transition="none") 
+    h3 How do we evaluate our model?
+    p 
+      strong Strategy 2: 
+      | Generate samples and compare them
+      figure
+        img.plain(src="img/gm6.jpg" align="centre" width="40%", border="None")
+    p 
+      strong Do we really need an explicit distribution for comparison?
+
+  section(data-transition="none") 
+    h3 How do we approach it?
+    p Let's take an example
+      figure
+        img.plain(src="img/gm6.jpg" align="centre" width="40%", border="None")  
+
+  section(data-transition="none") 
+    h3 .. leads us to Implicit Models
+
+  section(data-transition="none") 
+    h3 What are Implicit Models?
+    ul
+      li Learning only 
+
+  section
+    h2 Slide 2
+    p Hi
+    span.fragment $$ \int \sum e_i \otimes k(x, \cdot) $$
+
+  section
+    h2 More Complicated
+
+    div(style="width: 60%; position: absolute; left: 0").
+      \begin{align}
+        f &= \sum_{j=1}^{12} j e^{\pi \mathbb{i}} \\
+        &\fragment{3}{= -\sum_{j=1}^{12} j} \\
+        &\fragment{5}{= - \frac{12}{2} (12 + 1)} \\
+        &\fragment{6}{= - 6 \cdot 13} \\
+        &\fragment{7}{= -78}
+      \end{align}
+
+    div(style="width: 30%; position: absolute; left: 65%")
+      p.fragment(data-fragment-index=2) Remember:
+      p.fragment(data-fragment-index=2) $e^{\pi \mathbb{i}} = -1$
+      p.fragment(data-fragment-index=4).
+        $\sum_{j=1}^b j = \frac{b (b + 1)}{2}$
